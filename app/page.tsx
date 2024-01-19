@@ -1,6 +1,7 @@
 'use client'
 import Image from 'next/image'
 import getStipePromise from './lib/stripe'
+import Link from 'next/link';
 const products = [
   // {
   //   product: 1,
@@ -41,8 +42,11 @@ export default function Home() {
     }
   
   return (
-    <div>
-      <button onClick={handlecheckout} className='rounded-md bg-green-500 p-2 m-4'>Checkout</button>
+    <div className='flex flex-col justify-center items-center'>
+      <button onClick={handlecheckout} className='rounded-md w-48 bg-green-500 p-2 m-4'>Checkout</button>
+      <Link href='/product/1'><div className='bg-red-500 m-4 p-2 text-xl rounded-lg'>Product 1</div></Link>
+      <Link href='/product/2'><div className='bg-red-500 m-4 p-2 text-xl rounded-lg'>Product 2</div></Link>
+      <Link href='/product/3'><div className='bg-red-500 m-4 p-2 text-xl rounded-lg'>Product 3</div></Link>
     </div>
   )
 }
