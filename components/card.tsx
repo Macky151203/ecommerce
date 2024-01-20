@@ -10,11 +10,11 @@ interface Data{
 function Card(data:Data) {
   return (
     <>
-      <div className="bg-gray-300 shadow-lg rounded-lg gap-2 m-4 p-2 lg:p-8 flex flex-col md:flex-col lg:flex-row">
-        <Image src={img} alt="error" className="" />
+      <div className="bg-gray-300 text-center md:text-left shadow-md justify-center items-center rounded-lg gap-2 m-4 p-2 lg:p-8 lg:pt-12 flex flex-col md:flex-col lg:flex-row">
+        <Image src={img} alt="error" className="rounded-md" />
         <div className="sm:w-2/3 p-1">
-          <div className="p-1 text-md font-medium">"{data.review}".</div>
-          <div className="mt-4 p-1 text-xl font-bold">{data.name}</div>
+          <div className="p-1 text-md font-medium text-gray-600">"{data.review}".</div>
+          <div className="mt-4 p-1 text-3xl font-bold">{data.name}</div>
           <div className="p-1 text-md font-medium">{data.type}</div>
         </div>
       </div>
