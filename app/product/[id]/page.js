@@ -3,11 +3,11 @@ import React, { FC } from 'react'
 
 
 
-function Productcard({params}) {
+function Product({params}) {
     
   return (
     <div>The product id and details- {params.id}</div>
   )
 }
 
-export default Productcard
+export default Product

@@ -74,3 +74,145 @@
     @apply bg-background text-foreground;
   }
 }
+
+.hero-section{
+  width:100vw;
+  height:100vh;
+  background-color: #d2d7d3;
+}
+.circle{
+  width:35vw;
+  height:35vw;
+  top:-6vw;
+  left:-6vw;
+  z-index:1;
+}
+.navbar{
+  height:13vh;
+}
+.active{
+  background: transparent;
+  border: solid 2px #fb6647;
+  border-radius:15px;
+  color:#fb6647;
+}
+ul li{
+  padding:5px;
+  margin:5px;
+  width:25%;
+  text-align: center;
+}
+.hero-content{
+  left:10vw;
+  width:35%;
+  height:70%;
+  z-index:5;
+}
+.hero-content p{
+  padding:10px 0;
+}
+@media (max-width:320px){
+  .circle{
+    width:65vw;
+    height:65vw;
+    top:-15vw;
+    left:-15vw;
+    z-index:1;
+  }
+  .hero-content{
+    left:10vw;
+    width:70%;
+    height:30%;
+  }
+  .navbar-brand{
+    width:50%;
+  }
+  .navbar-brand h5{
+    font-size: 15px;
+  }
+  .navbar-brand p{
+    font-size:12px;
+  }
+  .hero-section img{
+    width:60%;
+    height:50%;
+    margin:0;
+  }
+  ul li{
+    width:50%;
+    margin:5px auto;
+  }
+}
+@media (min-width:321px) and (max-width:768px){
+  .circle{
+    width:80vw;
+    height:80vw;
+    top:-25vw;
+    left:-25vw;
+  }
+  ul li{
+    width:50%;
+    margin:5px auto;
+  }
+  .hero-content{
+    width:45%;
+    height:50%;
+  }
+  .navbar-brand{
+    width:50%;
+  }
+  .navbar-brand h5{
+    font-size: 15px;
+  }
+  .navbar-brand p{
+    font-size:12px;
+  }
+  .hero-section img{
+    width:80%;
+    height:70%;
+    margin:0;
+  }
+}
+@media (min-width:769px) and (max-width:1024px){
+  .circle{
+    width:50vw;
+    height:50vw;
+    top:-10vw;
+    left:-10vw;
+  }
+  .hero-content{
+    left:10vw;
+    width:45%;
+    height:60%;
+  }
+  .navbar-brand{
+    width:50%;
+  }
+  .navbar-brand h5{
+    font-size: 20px;
+  }
+  .navbar-brand p{
+    font-size:16px;
+  }
+  .hero-section img{
+    width:90%;
+    height:70%;
+    margin:0;
+  }
+}
+::-webkit-scrollbar-track {
+  background: rgb(247, 244, 244);
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(121, 118, 119);
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
