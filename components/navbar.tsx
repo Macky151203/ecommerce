@@ -1,5 +1,6 @@
 'use client'
 import {useState} from 'react';
+import Link from 'next/link';
 function Navbar(){
     const [menubar, setMenubar]=useState(false)
     
@@ -33,7 +34,7 @@ function Navbar(){
                     <li>About</li>
                     <li>Products</li>
                     <li>Cart</li>
-                    <li>Login</li>
+                    <li><Link href="/login">Login</Link></li>
                     <li>SignUp</li>
                 </ul>
             </div>
