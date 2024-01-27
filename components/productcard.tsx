@@ -6,7 +6,7 @@ import { FaStar } from "react-icons/fa";
 function Productcard() {
   return (
     <>
-      <div className='flex flex-col shadow-md p-4 bg-white rounded-lg'>
+      <div className='flex flex-col shadow-md m-2 p-4 bg-white rounded-lg'>
         <Image className='rounded-lg' src={img1} alt='error loading image..' />
         <div className='flex flex-row justify-between mt-4 px-2'>
           <div className='font-semibold text-xl'>Shiny Dress</div>
