@@ -1,8 +1,30 @@
 'use client'
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+
 function Navbar(){
     const [menubar, setMenubar]=useState(false)
+    const [user,setuser]=useState('0')
+    const supabase = createClientComponentClient();
+    const router=useRouter()
+
+    const handlesignout=async()=>{
+        await supabase.auth.signOut()
+        router.refresh()
+        setuser('0')
+    }
+
+    useEffect(()=>{
+        async function getuser() {
+            const {data:{user}}= await supabase.auth.getUser()
+            if(user){
+                setuser(user?.id)
+            }
+        }
+        getuser()
+    },[])
     
     return(
         <nav className="navbar w-full flex justify-around items-center py-6 relative top-0 right-0 left-0 z-10">
@@ -34,8 +56,9 @@ function Navbar(){
                     <li>About</li>
                     <li>Products</li>
                     <li>Cart</li>
-                    <li><Link href="/login">Login</Link></li>
-                    <li>SignUp</li>
+                    
+                    {user!=='0'?<li onClick={handlesignout} className='cursor-pointer'>Log out</li>:<li><Link href="/login">Login/Signup</Link></li>}
+
                 </ul>
             </div>
         </nav>

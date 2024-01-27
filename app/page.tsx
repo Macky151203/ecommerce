@@ -86,11 +86,13 @@ export default function Home() {
       <div className="circle bg-black absolute rounded-full"></div>
       <div className="hero-section relative bg-red-500 text-gray-200">
         <Navbar />
+        <div className='flex flex-col lg:flex-row'>
         <div className="hero-content absolute flex justify-around flex-col lg:my-12 my-8 mx-auto">
           <h1 className="py-5 font-normal text-3xl md:text-5xl lg:text-6xl xl:text-7xl">Enhance Your Daily Routine</h1>
           <p className="py-2 text-sm md:text-md lg:text-lg xl:text-xl ">fkjvnrtvhrnvlrtblrtbj<br />jknvtrbjnrbyjtbnytj</p>
         </div>
         <Image src={BgImage} alt="Trimming beard" className="absolute bottom-0 mx-20" />
+        </div>
       </div>
 
       {/* tabs */}
