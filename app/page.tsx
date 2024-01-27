@@ -83,8 +83,8 @@ export default function Home() {
   return (
     <div className='max-w-full overflow-x-hidden'>
       
-      <div className="circle bg-white absolute rounded-full"></div>
-      <div className="hero-section relative ">
+      <div className="circle bg-black absolute rounded-full"></div>
+      <div className="hero-section relative bg-red-500 text-gray-200">
         <Navbar />
         <div className="hero-content absolute flex justify-around flex-col lg:my-12 my-8 mx-auto">
           <h1 className="py-5 font-normal text-3xl md:text-5xl lg:text-6xl xl:text-7xl">Enhance Your Daily Routine</h1>
@@ -94,8 +94,9 @@ export default function Home() {
       </div>
 
       {/* tabs */}
-      <div className='flex flex-col gap-8 mt-12 justify-center items-center'>
-        <div className='text-5xl'>New Arrivals</div>
+      <div className='bg-black'>
+      <div className='flex flex-col gap-8 pt-12 justify-center items-center bg-black'>
+        <div className='text-5xl text-gray-500'>New Arrivals</div>
         <div className='text-xl md:w-1/2 text-center text-gray-500'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla, autem est ipsum reiciendis voluptate magni temporibus itaque facilis quos tenetur!</div>
       </div>
       <div className='mt-8 flex justify-center items-center'>
@@ -117,12 +118,13 @@ export default function Home() {
         </Tabs>
 
       </div>
+      </div>
 
 
       {/* carousel */}
 
-      <div className='w-full h-[1px] bg-black my-8'></div>
-      <div className='flex flex-col justify-center items-center mt-8'>
+      <div className='w-full h-[1px] bg-black py-8'></div>
+      <div className='bg-red-500 flex flex-col justify-center items-center pb-8  pt-8'>
         <div className='flex text-center flex-col justify-center items-center gap-4  m-4 mb-12'>
           <div className='lg:text-4xl text-3xl font-semibold'>This is what our customers say about us</div>
           <div className='text-gray-500'>Hear the review from our customers they have written it by themselves</div>
@@ -146,17 +148,18 @@ export default function Home() {
       </div>
 
       {/* newsletter */}
-      <div className='w-full h-[1px] bg-black my-16'></div>
-      <div className='flex flex-col m-4 mt-16 justify-center items-center'>
-        <div className='lg:text-4xl text-3xl text-center font-semibold'>SignUp for Newsletter</div>
+      <div className='w-full h-[1px] bg-black '></div>
+      <div className='flex flex-col bg-black pb-16 pt-16 justify-center items-center'>
+        <div className='lg:text-4xl text-3xl text-center font-semibold text-gray-500'>SignUp for Newsletter</div>
         <div className='lg:w-1/2 mt-4 text-center text-gray-500'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus vitae ipsa, nisi sunt facere, neque doloribus voluptas temporibus laborum quas ad aspernatur, eos dolor corrupti minus vero fugit deleniti sint!</div>
-        <div><input className='rounded-md bg-gray-200 w-72 md:w-96 m-4 mt-8 h-12 p-1' placeholder='name@mail.com' type='text' /></div>
-        <div><button className='p-2 w-72 h-12 rounded-lg bg-black text-white text-center '>Subscribe Now</button></div>
+        <div><input className='rounded-md bg-gray-200 w-72 md:w-96 m-4 mt-8 pl-4 h-12 p-1' placeholder='name@mail.com' type='text' /></div>
+        <div><button className='p-2 w-72 h-12 rounded-lg bg-red-500 text-white text-center hover:bg-red-400 transition ease-in-out '>Subscribe Now</button></div>
       </div>
 
       {/* footer */}
-      <div className='bg-gray-300 flex-col flex justify-center gap-2 items-center w-full h-24 mt-12'>
-        <div className='md:text-3xl text-2xl text-gray-700'>Hexa</div>
+      <div className='w-full h-[1px] bg-white '></div>
+      <div className='bg-black flex-col flex justify-center gap-2 items-center w-full h-30 py-4'>
+        <div className='md:text-3xl text-2xl text-red-700'>Hexa</div>
         <div className=' text-gray-500'>Copyright © 2024. All Rights Reseved.</div>
       </div>
 

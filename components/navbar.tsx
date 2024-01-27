@@ -29,10 +29,10 @@ function Navbar(){
                 </div>
             </div>
             <div className="navbar-links hidden md:block text-[#1e1e1ebb] w-1/2 text-md my-4" id="navbar-links">
-                <ul className="list-none block md:flex md:justify-evenly md:gap-y-1.5 text-center">
+                <ul className="list-none block md:flex md:justify-evenly md:gap-y-1.5 font-semibold text-xl text-center">
                     <li>About</li>
                     <li>Products</li>
-                    <li>Contacts</li>
+                    <li>Cart</li>
                     <li>Login</li>
                     <li>SignUp</li>
                 </ul>
