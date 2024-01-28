@@ -94,7 +94,7 @@ function LoginPage() {
                         <RocketIcon className="h-4 w-4" />
                         <AlertTitle>Mail Confirmation</AlertTitle>
                         <AlertDescription>
-                            Chcek your given main and click confirm email.
+                            Check your given main and click confirm email.
                         </AlertDescription>
                     </Alert>
                     </> : <></>

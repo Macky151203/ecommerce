@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import getStipePromise from './lib/stripe'
-import BgImage from '../app/images/beardface.png'
+import BgImage from '../app/images/beardface1.png'
 import Navbar from '@/components/navbar';
 import {
   Carousel,
@@ -81,45 +81,54 @@ export default function Home() {
   }
 
   return (
-    <div className='max-w-full overflow-x-hidden'>
-      
+    <div className='max-w-full bg-red-500 overflow-x-hidden'>
+
       <div className="circle bg-black absolute rounded-full"></div>
-      <div className="hero-section relative bg-red-500 text-gray-200">
+      <div className='h-screen'>
         <Navbar />
-        <div className='flex flex-col lg:flex-row'>
-        <div className="hero-content absolute flex justify-around flex-col lg:my-12 my-8 mx-auto">
-          <h1 className="py-5 font-normal text-3xl md:text-5xl lg:text-6xl xl:text-7xl">Enhance Your Daily Routine</h1>
-          <p className="py-2 text-sm md:text-md lg:text-lg xl:text-xl ">fkjvnrtvhrnvlrtblrtbj<br />jknvtrbjnrbyjtbnytj</p>
-        </div>
-        <Image src={BgImage} alt="Trimming beard" className="absolute bottom-0 mx-20" />
+        <div className=" pt-16 flex-col  flex lg:flex-row bg-red-500 text-gray-200">
+          {/* <div className='flex h flex-col lg:flex-row'>
+          <div className="hero-content w-full md:w-1/2 absolute flex justify-around flex-col lg:my-12 my-8 mx-auto">
+            <h1 className="py-5 font-normal text-3xl md:text-5xl lg:text-6xl xl:text-7xl">Enhance Your Daily Routine</h1>
+            <p className="py-2 text-sm md:text-md lg:text-lg xl:text-xl ">fkjvnrtvhrnvlrtblrtbj  jknvtrbjnrbyjtbnytj</p>
+          </div>
+          <Image src={BgImage} alt="Trimming beard" className="hidden lg:absolute sm:flex md:bottom-0 -bottom-96 mx-20" />
+        </div> */}
+          <div className='md:w-1/2 z-20 flex-col flex gap-8  text-white   h-full'>
+            <div className='text-6xl text-center my-4 md:text-left md:w-2/3 md:pl-24 relative sm:top-1/4'>Enhance Your Daily Routine</div>
+            <div className='relative sm:top-1/4 px-4 text-xl md:pl-24 text-center md:text-left md:w-2/3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, tempora. Quibusdam magnam minima vel neque quasi</div>
+          </div>
+          <div className='md:w-1/2 h-full'>
+            <Image src={BgImage} alt="Trimming beard" className="z-10 absolute bottom-0 " />
+          </div>
         </div>
       </div>
 
       {/* tabs */}
       <div className='bg-black'>
-      <div className='flex flex-col gap-8 pt-12 justify-center items-center bg-black'>
-        <div className='text-5xl text-gray-500'>New Arrivals</div>
-        <div className='text-xl md:w-1/2 text-center text-gray-500'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla, autem est ipsum reiciendis voluptate magni temporibus itaque facilis quos tenetur!</div>
-      </div>
-      <div className='mt-8 flex justify-center items-center'>
-        <Tabs defaultValue="Base" className="w-4/5 flex flex-col justify-center items-center">
-          <TabsList className=''>
-            <TabsTrigger value="Base" className='text-center'>Base</TabsTrigger>
-            <TabsTrigger value="Premium" className='text-center'>Premium</TabsTrigger>
-          </TabsList>
-          <TabsContent className='flex  flex-col lg:flex-row gap-x-8' value="Base">
-            <Productcard />
-            <Productcard />
-            <Productcard />
-          </TabsContent>
-          <TabsContent className='flex  flex-col lg:flex-row gap-x-8' value="Premium">
-            <Productcard />
-            <Productcard />
-            <Productcard />
-          </TabsContent>
-        </Tabs>
+        <div className='flex flex-col gap-8 pt-12 justify-center items-center bg-black'>
+          <div className='text-5xl text-gray-500'>New Arrivals</div>
+          <div className='text-xl md:w-1/2 p-1 text-center text-gray-500'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla, autem est ipsum reiciendis voluptate magni temporibus itaque facilis quos tenetur!</div>
+        </div>
+        <div className='mt-8 flex justify-center items-center'>
+          <Tabs defaultValue="Base" className="w-4/5 flex flex-col justify-center items-center">
+            <TabsList className=''>
+              <TabsTrigger value="Base" className='text-center'>Base</TabsTrigger>
+              <TabsTrigger value="Premium" className='text-center'>Premium</TabsTrigger>
+            </TabsList>
+            <TabsContent className='flex  flex-col lg:flex-row gap-x-8' value="Base">
+              <Productcard />
+              <Productcard />
+              <Productcard />
+            </TabsContent>
+            <TabsContent className='flex  flex-col lg:flex-row gap-x-8' value="Premium">
+              <Productcard />
+              <Productcard />
+              <Productcard />
+            </TabsContent>
+          </Tabs>
 
-      </div>
+        </div>
       </div>
 
 
