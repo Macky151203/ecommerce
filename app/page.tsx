@@ -13,6 +13,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Card from '@/components/card';
 import Productcard from '@/components/productcard';
+import { useState } from 'react';
 
 const reviewdata = [
   {
@@ -63,6 +64,22 @@ const products = [
 ];
 
 export default function Home() {
+
+  const [mail,setmail]= useState('')
+
+  const mailfunc= async ()=>{
+    const res=await fetch('/api/sendmail/',{
+      method:"POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      cache: "no-cache",
+      body: JSON.stringify({mail})
+    })
+    const data=await res.json();
+    setmail('')
+    console.log(data.message)
+  }
 
   const handlecheckout = async () => {
     const stripe = await getStipePromise()
@@ -117,14 +134,17 @@ export default function Home() {
               <TabsTrigger value="Premium" className='text-center'>Premium</TabsTrigger>
             </TabsList>
             <TabsContent className='flex  flex-col lg:flex-row gap-x-8' value="Base">
-              <Productcard />
-              <Productcard />
-              <Productcard />
+              <Productcard id='1' />
+              <Productcard id='2' />
+              <Productcard id='3' />
             </TabsContent>
             <TabsContent className='flex  flex-col lg:flex-row gap-x-8' value="Premium">
-              <Productcard />
-              <Productcard />
-              <Productcard />
+              {/* <Productcard id='1' />
+              <Productcard id='2' />
+              <Productcard id='3' /> */}
+              <div className='text-white text-2xl'>
+                Premium content not available right now.
+              </div>
             </TabsContent>
           </Tabs>
 
@@ -137,8 +157,8 @@ export default function Home() {
       <div className='w-full h-[1px] bg-black py-8'></div>
       <div className='bg-red-500 flex flex-col justify-center items-center pb-8  pt-8'>
         <div className='flex text-center flex-col justify-center items-center gap-4  m-4 mb-12'>
-          <div className='lg:text-4xl text-3xl font-semibold'>This is what our customers say about us</div>
-          <div className='text-gray-500'>Hear the review from our customers they have written it by themselves</div>
+          <div className='lg:text-4xl text-black text-3xl font-semibold'>This is what our customers say about us</div>
+          <div className='text-black text-xl'>Hear the review from our customers they have written it by themselves</div>
         </div>
         <Carousel className='w-2/3 '>
           <CarouselContent className=''>
@@ -163,8 +183,10 @@ export default function Home() {
       <div className='flex flex-col bg-black pb-16 pt-16 justify-center items-center'>
         <div className='lg:text-4xl text-3xl text-center font-semibold text-gray-500'>SignUp for Newsletter</div>
         <div className='lg:w-1/2 mt-4 text-center text-gray-500'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus vitae ipsa, nisi sunt facere, neque doloribus voluptas temporibus laborum quas ad aspernatur, eos dolor corrupti minus vero fugit deleniti sint!</div>
-        <div><input className='rounded-md bg-gray-200 w-72 md:w-96 m-4 mt-8 pl-4 h-12 p-1' placeholder='name@mail.com' type='text' /></div>
-        <div><button className='p-2 w-72 h-12 rounded-lg bg-red-500 text-white text-center hover:bg-red-400 transition ease-in-out '>Subscribe Now</button></div>
+        
+        <div><input onChange={(e)=>setmail(e.target.value)} value={mail} className='rounded-md bg-gray-200 w-72 md:w-96 m-4 mt-8 pl-4 h-12 p-1' placeholder='name@mail.com' type='email' required /></div>
+        <div><button onClick={mailfunc}  className='p-2 w-72 h-12 rounded-lg bg-red-500 text-white text-center hover:bg-red-400 transition ease-in-out '>Subscribe Now</button></div>
+        
       </div>
 
       {/* footer */}
