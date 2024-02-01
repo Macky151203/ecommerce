@@ -12,7 +12,7 @@ export default function Page({ params }: { params: { "product-id": string } }) {
     const [kv_arr,setKv] = useState([])
     const [about_Arr,setAbt] = useState([])
     let product;
-    let about;
+    let about: { [x: string]: any; };
     useEffect(()=>{
         let f = async()=>{
             try{
@@ -62,7 +62,7 @@ export default function Page({ params }: { params: { "product-id": string } }) {
         <div className="description lg:w-[50%] mt-6">
             <span className="font-bold text-2xl"> Beard Shaping Tool | Customized | Its your standard | only for standard Men </span>
             <div className="flex mt-8 gap-16 flex-col lg:flex-row ">
-                <div class="det">
+                <div className="det">
                     <table className="mb-4">
                     {kv_arr.map(([k,v])=>(
                         <tr className="">
