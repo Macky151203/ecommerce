@@ -14,7 +14,7 @@ export async function POST(request) {
         await sendMail(
           "confirmation mail",
           mail,
-          `Hey thanks for subscribing to our Newsletter, stay tuned for the updates!!`
+          `Hey thanks for subscribing to our Newsletter, stay tuned for the updates!!!!`
         );
         return NextResponse.json({ message: "successs" }, { status: 200 })
 
