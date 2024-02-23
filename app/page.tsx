@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import getStipePromise from './lib/stripe'
 import BgImage from '../app/images/beardface1.png'
+// import vid from '../app/videos/hexavideo.mp4'
 import Navbar from '@/components/navbar';
 import {
   Carousel,
@@ -14,6 +15,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Card from '@/components/card';
 import Productcard from '@/components/productcard';
 import { useState } from 'react';
+// import ReactPlayer from 'react-player';
+// import Videoplayer from '@/components/videoplayer';
 
 const reviewdata = [
   {
@@ -50,33 +53,39 @@ const reviewdata = [
 
 const products = [
   {
-    product: 2,
+    product: 1,
     name: "Tshirt",
     price: 1000,
     quantity: 1,
   },
   {
-    product: 1,
+    product: 2,
     name: "shoes",
     price: 1500,
+    quantity: 1,
+  },
+  {
+    product: 3,
+    name: "Gloves",
+    price: 500,
     quantity: 1,
   },
 ];
 
 export default function Home() {
 
-  const [mail,setmail]= useState('')
+  const [mail, setmail] = useState('')
 
-  const mailfunc= async ()=>{
-    const res=await fetch('/api/sendmail/',{
-      method:"POST",
+  const mailfunc = async () => {
+    const res = await fetch('/api/sendmail/', {
+      method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       cache: "no-cache",
-      body: JSON.stringify({mail})
+      body: JSON.stringify({ mail })
     })
-    const data=await res.json();
+    const data = await res.json();
     setmail('')
     console.log(data.message)
   }
@@ -120,6 +129,11 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* video */}
+      {/* <div className='bg-white'>
+        <Videoplayer />
+      </div> */}
 
       {/* tabs */}
       <div className='bg-black'>
@@ -183,10 +197,10 @@ export default function Home() {
       <div className='flex flex-col bg-black pb-16 pt-16 justify-center items-center'>
         <div className='lg:text-4xl text-3xl text-center font-semibold text-gray-500'>SignUp for Newsletter</div>
         <div className='lg:w-1/2 mt-4 text-center text-gray-500'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus vitae ipsa, nisi sunt facere, neque doloribus voluptas temporibus laborum quas ad aspernatur, eos dolor corrupti minus vero fugit deleniti sint!</div>
-        
-        <div><input onChange={(e)=>setmail(e.target.value)} value={mail} className='rounded-md bg-gray-200 w-72 md:w-96 m-4 mt-8 pl-4 h-12 p-1' placeholder='name@mail.com' type='email' required /></div>
-        <div><button onClick={mailfunc}  className='p-2 w-72 h-12 rounded-lg bg-red-500 text-white text-center hover:bg-red-400 transition ease-in-out '>Subscribe Now</button></div>
-        
+
+        <div><input onChange={(e) => setmail(e.target.value)} value={mail} className='rounded-md bg-gray-200 w-72 md:w-96 m-4 mt-8 pl-4 h-12 p-1' placeholder='name@mail.com' type='email' required /></div>
+        <div><button onClick={mailfunc} className='p-2 w-72 h-12 rounded-lg bg-red-500 text-white text-center hover:bg-red-400 transition ease-in-out '>Subscribe Now</button></div>
+
       </div>
 
       {/* footer */}

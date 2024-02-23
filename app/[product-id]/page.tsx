@@ -7,21 +7,94 @@ import { IoArrowBack } from "react-icons/io5";
 import { CiUser } from "react-icons/ci";
 import { usePathname } from 'next/navigation'
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, SetStateAction } from "react";
+import getStipePromise from "../lib/stripe";
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+
 export default function Page({ params }: { params: { "product-id": string } }) {
+    console.log(params["product-id"])
+    const [usr, setuser] = useState('0')
+    const supabase = createClientComponentClient();
+    let products = [
+        {
+            product: 1,
+            name: "Tshirt",
+            price: 1000,
+            quantity: 1,
+        },
+        {
+            product: 2,
+            name: "shoes",
+            price: 1500,
+            quantity: 1,
+        },
+        {
+            product: 3,
+            name: "Gloves",
+            price: 500,
+            quantity: 1,
+        },
+    ];
+    // const [prod, setprod] = useState(products)
+    const [qty, setqty] = useState('1')
     const [kv_arr, setKv] = useState([])
     const [about_Arr, setAbt] = useState([])
     let product;
     let about: { [x: string]: any; };
+    const changeqty = async (e) => {
+        setqty(e.target.value)
+        // console.log("selected qty")
+        // console.log(qty)
+
+    }
+    const tocart = async () => {
+        const { data: { user } } = await supabase.auth.getUser()
+            if (user) {
+                setuser(user?.id)
+            }
+        let updatedprod = products.map(obj => String(obj.product) === String(params["product-id"]) ? { ...obj, quantity: qty } : obj)
+        //console.log(updatedprod)
+        products = updatedprod
+        const response = await fetch("/api/addtocart", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify([products[params["product-id"]-1],user])
+        })
+        const data=await response.json()
+        if(data.msg=="success"){
+            console.log("Successfully added too cart")
+        }
+    }
+    const handlecheckout = async () => {
+        let updatedprod = products.map(obj => String(obj.product) === String(params["product-id"]) ? { ...obj, quantity: qty } : obj)
+        //console.log(updatedprod)
+        products = updatedprod
+        const stripe = await getStipePromise()
+        const res = await fetch('/api/stripecheckout/', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            cache: "no-cache",
+            body: JSON.stringify([products[params["product-id"] - 1]])
+        })
+        const data = await res.json()
+        if (data.session) {
+            stripe?.redirectToCheckout({ sessionId: data.session.id })
+        }
+    }
     useEffect(() => {
         let f = async () => {
             try {
-                console.log("came here")
+                //console.log("came here")
+
                 let product_response = await fetch(`${window.location.origin}/productDet/${params["product-id"]}.json`)
                 let productAbt_response = await fetch(`${window.location.origin}/productAbt/${params["product-id"]}.json`)
                 product = await product_response.json()
                 about = await productAbt_response.json()
-                console.log("about down")
+                //console.log("about down")
                 console.log(about)
                 setKv([])
                 setAbt([])
@@ -83,19 +156,20 @@ export default function Page({ params }: { params: { "product-id": string } }) {
                             <div className="qty md:w-[40%] lg:mt-[10%]">
                                 <div className="maincost border-white rounded-md border-2 p-4">
                                     <span className="text-bold mr-4">Qty :</span>
-                                    <select className="border-black border-2">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                    <select value={qty} onChange={changeqty} className="border-black text-black border-2">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
                                     </select>
+                                    <p>selected qty- {qty}</p>
                                     <div className="cost relative mt-8 w-fit">
-                                        <span className="absolute top-[-10%]">₹</span><span className="text-2xl mt-6 ml-2">501.00</span>
+                                        <span className="absolute top-[-10%]">₹</span><span className="text-2xl mt-6 ml-2">{products[params["product-id"] - 1].price}</span>
                                     </div>
                                     <div className="buy mt-6">
-                                        <button className="rounded-3xl bg-red-500 hover:bg-red-400 w-[100%] py-2">Add to cart</button>
-                                        <button className="mt-4 rounded-3xl flex justify-center items-center bg-black text-white hover:bg-red-500 border-2 border-white hover:border-red-500  w-[100%] py-2">Buy now</button>
+                                        <button onClick={tocart} className="rounded-3xl bg-red-500 hover:bg-red-400 w-[100%] py-2">Add to cart</button>
+                                        <button onClick={handlecheckout} className="mt-4 rounded-3xl flex justify-center items-center bg-black text-white hover:bg-red-500 border-2 border-white hover:border-red-500  w-[100%] py-2">Buy now</button>
                                     </div>
                                 </div>
                             </div>

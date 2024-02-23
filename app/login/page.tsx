@@ -57,7 +57,7 @@ function LoginPage() {
             seterr(true)
         }
 
-        console.log(res.data)
+        console.log(res.data.user?.id)
         router.refresh()
         if (res.data.user !== null) {
             router.push('/')
