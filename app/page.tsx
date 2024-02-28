@@ -120,7 +120,7 @@ export default function Home() {
           </div>
           <Image src={BgImage} alt="Trimming beard" className="hidden lg:absolute sm:flex md:bottom-0 -bottom-96 mx-20" />
         </div> */}
-          <div className='md:w-1/2 z-20 flex-col flex gap-8  text-white   h-full'>
+          <div className='md:w-1/2 z-20 flex-col flex gap-8  lg:pl-12 text-white   h-full'>
             <div className='text-6xl text-center my-4 md:text-left md:w-2/3 md:pl-24 relative sm:top-1/4'>Enhance Your Daily Routine</div>
             <div className='relative sm:top-1/4 px-4 text-xl md:pl-24 text-center md:text-left md:w-2/3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, tempora. Quibusdam magnam minima vel neque quasi</div>
           </div>

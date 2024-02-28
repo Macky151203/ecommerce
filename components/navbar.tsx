@@ -1,66 +1,51 @@
 'use client'
-import {useState,useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import Ham from '../app/images/ham.png'
+import Image from 'next/image';
 
-function Navbar(){
-    const [menubar, setMenubar]=useState(false)
-    const [user,setuser]=useState('0')
+function Navbar() {
+    const [open, setopen] = useState(true)
+    const [user, setuser] = useState('0')
     const supabase = createClientComponentClient();
-    const router=useRouter()
+    const router = useRouter()
 
-    const handlesignout=async()=>{
+    const handlesignout = async () => {
         await supabase.auth.signOut()
         router.refresh()
         setuser('0')
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         async function getuser() {
-            const {data:{user}}= await supabase.auth.getUser()
-            if(user){
+            const { data: { user } } = await supabase.auth.getUser()
+            if (user) {
                 setuser(user?.id)
             }
         }
         getuser()
-    },[])
-    
-    return(
-        <nav className="navbar w-full flex justify-around items-center py-6 relative top-0 right-0 left-0 z-10">
-            <div className="navbar-brand w-2/6">
-                <div className="w-3/4 md:w-1/2 lg:w-5/12 xl:w-4/12 p-auto">
-                    <h5 className="tracking-[0.5rem] text-xl font-semibold text-[#f55e3f] bg-black w-fit pl-3 pr-2 mx-auto">HEXA</h5>
-                    <p className="text-black mx-auto text-center">MEN'S FASHION</p>
-                </div>
-            </div>
-            <div className="block w-1/2 md:hidden menu-bar">
-                <div className="w-3/12 sm:w-1/5 mx-auto h-1/2 border-solid border-2 border-white p-2 rounded-lg">
-                    {
-                        (menubar)?
-                            <>
-                                <div className="bar bg-white w-full h-1 rotate-45"></div>
-                                <div className="bar bg-white w-full h-1 -rotate-45 -mt-1"></div>
-                            </>
-                        :
-                            <>
-                                <div className="bar bg-white w-full h-1"></div>
-                                <div className="bar bg-white w-full h-1 mt-1 mb-1"></div>
-                                <div className="bar bg-white w-full h-1"></div>
-                            </>
-                    }
-                </div>
-            </div>
-            <div className="navbar-links hidden md:block text-[#1e1e1ebb] w-1/2 text-md my-4" id="navbar-links">
-                <ul className="list-none block md:flex md:justify-evenly md:gap-y-1.5 font-semibold text-xl text-center">
-                    <li>About</li>
-                    <li>Products</li>
-                    <li>Cart</li>
-                    
-                    {user!=='0'?<li onClick={handlesignout} className='cursor-pointer'>Log out</li>:<li><Link href="/login">Login/Signup</Link></li>}
+    }, [])
 
-                </ul>
+    return (
+        <nav className="text-white text-lg p-4 z-30 s md:flex flex-row justify-between px-12 items-center relative z-0">
+            <div className="flex flex-row justify-between">
+                <div className='text-3xl font-semibold text-red-400'>Hexa</div>
+                <span className="md:hidden block cursor-pointer"><button onClick={() => setopen(!open)}  ><Image className="w-8" src={Ham} /></button></span>
             </div>
+
+
+
+            <ul className={`top-16 transition-all font-semibold gap-6 ease-in duration-300 ${open ? 'opacity-0 md:opacity-100' : ''}   md:py-0 py-4 pl-2 md:pl-0 w-full md:w-auto left-0 md:flex flex-row md:items-center bg-black z-[-1] md:z-auto md:static absolute  md:bg-transparent`}>
+                <Link href='/'><li className="mx-1 md:my-0 my-6 cursor-pointer hover:text-black">Home</li></Link>
+                <Link href='/'><li className="mx-1 md:my-0 my-6 cursor-pointer hover:text-black">About</li></Link>
+                <Link href='/cart'><li className="mx-1 md:my-0 my-6 cursor-pointer hover:text-black">Cart</li></Link>
+                {/* <li className="mx-4 md:my-0 my-6 cursor-pointer hover:text-violet-600">Resources</li> */}
+                {user !== '0' ? <li onClick={handlesignout} className='mx-1 md:my-0 my-6 cursor-pointer hover:text-black'>Log out</li> : <li className='mx-4 md:my-0 my-6 cursor-pointer hover:text-black'><Link href="/login">Login/Signup</Link></li>}
+
+
+            </ul>
         </nav>
     )
 }

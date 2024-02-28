@@ -10,11 +10,13 @@ import { useRouter } from "next/router";
 import { useState, useEffect, SetStateAction } from "react";
 import getStipePromise from "../lib/stripe";
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { useToast } from "@/components/ui/use-toast"
 
 export default function Page({ params }: { params: { "product-id": string } }) {
-    console.log(params["product-id"])
+    //console.log(params["product-id"])
     const [usr, setuser] = useState('0')
     const supabase = createClientComponentClient();
+    const { toast } = useToast()
     let products = [
         {
             product: 1,
@@ -49,9 +51,9 @@ export default function Page({ params }: { params: { "product-id": string } }) {
     }
     const tocart = async () => {
         const { data: { user } } = await supabase.auth.getUser()
-            if (user) {
-                setuser(user?.id)
-            }
+        if (user) {
+            setuser(user?.id)
+        }
         let updatedprod = products.map(obj => String(obj.product) === String(params["product-id"]) ? { ...obj, quantity: qty } : obj)
         //console.log(updatedprod)
         products = updatedprod
@@ -60,11 +62,14 @@ export default function Page({ params }: { params: { "product-id": string } }) {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify([products[params["product-id"]-1],user])
+            body: JSON.stringify([products[params["product-id"] - 1], user])
         })
-        const data=await response.json()
-        if(data.msg=="success"){
-            console.log("Successfully added too cart")
+        const data = await response.json()
+        if (data.msg === "success") {
+            console.log("Successfully added to cart")
+            return toast({
+                title: `Successfully added ${qty} item to cart`
+            })
         }
     }
     const handlecheckout = async () => {
@@ -95,16 +100,16 @@ export default function Page({ params }: { params: { "product-id": string } }) {
                 product = await product_response.json()
                 about = await productAbt_response.json()
                 //console.log("about down")
-                console.log(about)
+                //  console.log(about)
                 setKv([])
                 setAbt([])
                 for (let key in about) {
                     setAbt(k => about[key])
-                    console.log(about[key])
+                    // console.log(about[key])
                 }
                 for (let key in product) {
                     let kv = [key, product[key]]
-                    console.log({ kv })
+                    //console.log({ kv })
                     setKv(k => [...k, kv])
                 }
             } catch (e) {
