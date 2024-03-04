@@ -5,7 +5,7 @@ import { FaStar } from "react-icons/fa";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-function Productcard({id}) {
+function Productcard({id,price}:{id:number,price:number}) {
   const router =useRouter()
   return (
     <>
@@ -23,7 +23,7 @@ function Productcard({id}) {
         </div>
         <div className='px-2 mt-4 text-sm'>4K customer reviews</div>
         <div className='flex flex-row justify-between mt-4 px-2'>
-          <div className='font-semibold text-xl'>95$</div>
+          <div className='font-semibold text-xl'>{price}$</div>
           <div className='gap-1 text-red-400'>
               Almost sold out
           </div>

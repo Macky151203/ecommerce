@@ -2,11 +2,12 @@
 import React, { useEffect, useState } from 'react'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import getStipePromise from "../lib/stripe";
+import { useRouter } from 'next/navigation';
 
 function Cart() {
 
   const supabase = createClientComponentClient();
-
+  const router=useRouter()
   const [cartitem, setcartitem] = useState([])
   const [loading, setloading] = useState(true)
 
@@ -18,19 +19,21 @@ function Cart() {
 
     const func = async () => {
       const { data: { user } } = await supabase.auth.getUser()
-      // if (user) {
-      //     setuser(user?.id)
-      // }
-      const response = await fetch('/api/getcart', {
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user)
-      })
-      const data = await response.json()
-      setcartitem(data.cartitem)
-      setloading(false)
+      if (!user) {
+          router.push('/login')
+      }
+      if(user){
+        const response = await fetch('/api/getcart', {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user)
+        })
+        const data = await response.json()
+        setcartitem(data.cartitem)
+        setloading(false)
+      }
     }
     func()
   }, [])
