@@ -38,7 +38,7 @@ function Navbar() {
 
 
 
-            <ul className={`top-16 transition-all font-semibold gap-6 ease-in duration-300 ${open ? 'opacity-0 md:opacity-100' : ''}   md:py-0 py-4 pl-2 md:pl-0 w-full md:w-auto left-0 md:flex flex-row md:items-center bg-black z-[-1] md:z-auto md:static absolute  md:bg-transparent`}>
+            <ul className={`top-16 transition-all font-semibold gap-6 ease-in-out duration-700 ${open ? 'left-0' : 'left-full'}   md:py-0 py-4 pl-2 md:pl-0 w-full md:w-auto left-0 md:flex flex-row md:items-center bg-violet-400 z-[-1] md:z-auto md:static absolute  md:bg-transparent`}>
                 <Link href='/'><li className="mx-1 md:my-0 my-6 cursor-pointer hover:text-black">Home</li></Link>
                 <Link href='/'><li className="mx-1 md:my-0 my-6 cursor-pointer hover:text-black">About</li></Link>
                 <Link href='/cart'><li className="mx-1 md:my-0 my-6 cursor-pointer hover:text-black">Cart</li></Link>
