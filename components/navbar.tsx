@@ -29,10 +29,11 @@ function Navbar() {
     }, [])
 
     return (
-        <nav className="text-white text-lg p-4 z-30 s md:flex flex-row justify-between px-12 items-center relative z-0">
+        <>
+        <nav className="md:text-black text-white text-lg p-4 z-30 s md:flex flex-row justify-between px-12 items-center relative z-0">
             <div className="flex flex-row justify-between">
-                <div className='text-3xl font-semibold text-red-400'>Hexa</div>
-                <span className="md:hidden block cursor-pointer"><button onClick={() => setopen(!open)}  ><Image className="w-8" src={Ham} /></button></span>
+                <div className='text-3xl font-semibold text-red-600'>Hexa</div>
+                <span className="md:hidden block cursor-pointer"><button onClick={() => setopen(!open)}  ><Image className="w-8" src={Ham} alt={''} /></button></span>
             </div>
 
 
@@ -46,7 +47,12 @@ function Navbar() {
 
 
             </ul>
+            
         </nav>
+        <div className='flex justify-center'>
+            <div className='bg-black md:w-1/2 h-[1px]'></div>
+        </div>
+        </>
     )
 }
 

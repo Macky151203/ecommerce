@@ -1,18 +1,25 @@
 import React from 'react'
 import Image from 'next/image'
-import img1 from "../app/images/pcardimg1.png"
+import img1 from "../app/images/pink.jpg"
+import img2 from "../app/images/black.jpg"
+import img3 from "../app/images/blue.jpg"
+import img4 from "../app/images/yellow.jpg"
+import img5 from "../app/images/hoddie.jpg"
+import img6 from "../app/images/green2.jpg"
 import { FaStar } from "react-icons/fa";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-function Productcard({id,price}:{id:number,price:number}) {
+
+function Productcard({id,price,img,name}:{id:number,price:number,img:string,name:string}) {
+  const images=[img1,img2,img3,img4,img5,img6]
   const router =useRouter()
   return (
     <>
       <div className='flex flex-col shadow-md m-2 p-4  transparent rounded-lg hover:scale-105 transition bg-slate-50'>
-        <Image className='rounded-lg' src={img1} alt='error loading image..' />
+        <Image className='rounded-lg' src={images[id-1]} alt='error loading image..' height={230}/>
         <div className='flex flex-row justify-between mt-4 px-2'>
-          <div className='font-semibold text-xl'>Shiny Dress</div>
+          <div className='font-semibold text-xl'>{name}</div>
           <div className='flex flex-row gap-1'>
             <FaStar className='text-yellow-400 text-xl' />
             <FaStar className='text-yellow-400 text-xl' />

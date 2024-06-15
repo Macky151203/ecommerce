@@ -1,9 +1,10 @@
 {
-    "Material":"Plastic",
-    "Brand":"Hexa men’s Fashion",
-    "Hair Type":"All",
-    "Colour":"Black",
-    "Shape":"Customized",
-    "Number of Items":"1",
-    "Net Quantity":"1.0 Count"
+    "SKU": "FRM-WHT-002",
+        "Fabric": "100% Cotton",
+        "Care": "Machine wash warm, tumble dry medium, warm iron if needed",
+        "Features": ["Slim fit", "Crisp collar", "Button cuffs"],
+        "Brand": "EleganceWear",
+        "Weight": "0.6 kg",
+        "Dimensions": "32 x 27 x 3 cm",
+        "Rating": 4.7
 }

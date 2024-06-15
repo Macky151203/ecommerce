@@ -1,9 +1,10 @@
 {
-    "Material":"Plastic",
-    "Brand":"Hexa men’s Fashion",
-    "Hair Type":"All",
-    "Colour":"Black",
-    "Shape":"Customized",
-    "Number of Items":"1",
-    "Net Quantity":"1.0 Count"
+  "SKU": "FLR-DRS-001",
+        "Fabric": "Polyester blend",
+        "Care": "Hand wash cold, line dry",
+        "Features": ["Flowy fabric", "V-neckline", "Knee-length hem"],
+        "Brand": "SummerStyle",
+        "Weight": "0.4 kg",
+        "Dimensions": "28 x 24 x 2 cm",
+        "Rating": 4.3
 }
