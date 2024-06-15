@@ -7,7 +7,7 @@ import Ham from '../app/images/ham.png'
 import Image from 'next/image';
 
 function Navbar() {
-    const [open, setopen] = useState(true)
+    const [open, setopen] = useState(false)
     const [user, setuser] = useState('0')
     const supabase = createClientComponentClient();
     const router = useRouter()
