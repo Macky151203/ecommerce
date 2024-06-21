@@ -153,7 +153,9 @@ export default function Page({ params }: { params: { "product-id": string } }) {
           </Link>
         </div>
         <div className=" cart absolute right-4 md:right-16 top-6 flex gap-4">
+          <Link href="/cart">
           <CiShoppingCart className="cursor-pointer" size={24} />
+          </Link>
           <CiUser className="cursor-pointer" size={24} />
         </div>
         <Link href="/" className="cart absolute left-4 md:left-16 top-6 flex gap-6">

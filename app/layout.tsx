@@ -1,9 +1,12 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter,Ubuntu } from 'next/font/google'
 import './globals.css'
 import { Toaster } from "@/components/ui/toaster"
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Ubuntu({
+  subsets: ['latin'],
+  weight: '300'
+})
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="">
+      <body className={`${inter.className}`}>
         <main>{children}</main>
         <Toaster />
         </body>

@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import Link from "next/link";
 import Image from "next/image";
+import ldimg from "../images/loading.png"
 import { CiShoppingCart } from "react-icons/ci";
 import { IoArrowBack } from "react-icons/io5";
 import { CiUser } from "react-icons/ci";
@@ -96,8 +97,8 @@ function Cart() {
         <div className='text-center p-4 text-red-400 font-semibold text-4xl'>Your Cart</div>
         {loading ?
           <>
-            <div className='w-1/2 h-44 rounded-lg animate-pulse bg-gray-200'>
-
+            <div className="animate-spin">
+            <Image src={ldimg} width={50} height={50} alt='some' />
             </div>
           </> :
           <div className='flex flex-row gap-4 flex-wrap justify-center'>

@@ -21,35 +21,26 @@ import { useState } from 'react';
 
 const reviewdata = [
   {
-    name: "name1",
+    name: "John",
     type: "traveller",
-    review: "hvwkj jbskj iibsk sbkjca iuvbf iubdskbjck ubdsbckj kbksjdbc khkbkdc bdskjbc khbdksbc "
+    review: "This product was amazing, and the quality was also not compromised. Worth the price."
   },
   {
-    name: "name1",
+    name: "Mac",
     type: "traveller",
-    review: "hvwkj jbskj iibsk sbkjca iuvbf iubdskbjck ubdsbckj kbksjdbc khkbkdc bdskjbc khbdksbc "
+    review: "Stylish and comfortable, this exceeded my expectations. The fabric feels luxurious and warm."
   },
   {
-    name: "name1",
+    name: "Henry",
     type: "traveller",
-    review: "hvwkj jbskj iibsk sbkjca iuvbf iubdskbjck ubdsbckj kbksjdbc khkbkdc bdskjbc khbdksbc "
+    review: "This shirt is fantastic! The fabric is soft and breathable, perfect for everyday wear."
   },
   {
-    name: "name1",
+    name: "David",
     type: "traveller",
-    review: "hvwkj jbskj iibsk sbkjca iuvbf iubdskbjck ubdsbckj kbksjdbc khkbkdc bdskjbc khbdksbc "
+    review: "Great quality and stylish! This shirt quickly became a staple in my wardrobe."
   },
-  {
-    name: "name1",
-    type: "traveller",
-    review: "hvwkj jbskj iibsk sbkjca iuvbf iubdskbjck ubdsbckj kbksjdbc khkbkdc bdskjbc khbdksbc "
-  },
-  {
-    name: "name1",
-    type: "traveller",
-    review: "hvwkj jbskj iibsk sbkjca iuvbf iubdskbjck ubdsbckj kbksjdbc khkbkdc bdskjbc khbdksbc "
-  }
+  
 ]
 
 const products = [
@@ -134,7 +125,7 @@ export default function Home() {
   </div> */}
             <div className='md:w-1/2 z-20 flex-col flex gap-8  lg:pl-12 text-black   h-full'>
               <div className='text-6xl text-center my-4 md:text-left md:w-2/3 md:pl-24 relative sm:top-1/4'>Enhance Your Daily Fashion</div>
-              <div className='relative sm:top-1/4 px-4 text-xl md:pl-24 text-center md:text-left md:w-2/3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, tempora. Quibusdam magnam minima vel neque quasi</div>
+              <div className='relative sm:top-1/4 px-4 text-xl md:pl-24 text-center md:text-left md:w-2/3'>Discover Timeless Elegance in Every Piece, Experience Luxury and Comfort Like Never Before!</div>
             </div>
             <div className='md:w-1/2 h-full'>
               <Image src={BgImage} alt="Trimming beard" className="z-10 absolute bottom-0 " />
