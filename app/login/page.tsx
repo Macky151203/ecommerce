@@ -11,6 +11,8 @@ import {
     AlertDescription,
     AlertTitle,
 } from "@/components/ui/alert"
+import { CiShoppingCart, CiUser } from 'react-icons/ci'
+import { IoArrowBack } from 'react-icons/io5'
 
 function LoginPage() {
 
@@ -71,7 +73,28 @@ function LoginPage() {
     }
 
     return (
-        <div className='bg-gray-900 flex flex-col items-center w-full h-screen'>
+      <>
+      <div className='overflow-x-hidden'>
+      <div className="grid w-[100vw]  place-items-center my-4">
+          <Link href="/" className="nav text-red-500 text-3xl font-semibold">
+            HEXA
+          </Link>
+        </div>
+        <div className=" cart absolute right-4 md:right-16 top-6 flex gap-4">
+          {/* <Link href="/cart">
+          <CiShoppingCart className="cursor-pointer" size={24} />
+          </Link> */}
+          <CiUser className="cursor-pointer" size={24} />
+        </div>
+        <Link href="/" className="cart absolute left-4 md:left-16 top-6 flex gap-6">
+          <IoArrowBack size={16} className="my-auto" />
+          <span className="hidden md:inline">
+            Back to Home
+          </span>
+        </Link>
+      </div>
+        <div className='bg-gray-900 flex overflow-x-hidden flex-col items-center w-full h-screen'>
+
 
             <div className='flex pt-12 flex-col justify-center items-center'>
                 <div className='m-4 text-red-500 text-4xl'>Hexa Login</div>
@@ -102,6 +125,7 @@ function LoginPage() {
 
 
         </div>
+        </>
     )
 }
 

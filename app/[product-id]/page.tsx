@@ -110,13 +110,13 @@ export default function Page({ params }: { params: { "product-id": string } }) {
     }
   }
   useEffect(() => {
-    const isloggedin = async () => {
-      const { data: { user } } = await supabase.auth.getUser()
-      if (!user) {
-        router.push('/login')
-      }
-    }
-    isloggedin()
+    // const isloggedin = async () => {
+    //   const { data: { user } } = await supabase.auth.getUser()
+    //   if (!user) {
+    //     router.push('/login')
+    //   }
+    // }
+    // isloggedin()
     let f = async () => {
       try {
         //console.log("came here")
